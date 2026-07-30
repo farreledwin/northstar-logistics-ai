@@ -2,6 +2,8 @@
 
 Northstar is a full-stack logistics analytics dashboard built for the Spaceship Senior Engineer / AI Tech Lead take-home. It combines deterministic operational metrics, constrained AI tool routing, explainable visual answers, and a transparent demand-forecast baseline.
 
+Live demo: https://northstar-logistics-ai.vercel.app
+
 ## What is included
 
 - Five filter-aware KPIs: total orders, completed deliveries, delayed orders, on-time rate, and average delivery time
@@ -16,7 +18,7 @@ Northstar is a full-stack logistics analytics dashboard built for the Spaceship 
 
 ## Run locally
 
-Requires Node.js 22.13 or newer.
+Requires Node.js 22.
 
 ```bash
 npm ci
