@@ -525,7 +525,7 @@ export function fallbackPlan(question: string, records: LogisticsRecord[]) {
 
   let dimension: Dimension = "none";
   if (/week/.test(text)) dimension = "week";
-  else if (/month|over time|trend/.test(text)) dimension = "month";
+  else if (/by month|monthly|over time|trend/.test(text)) dimension = "month";
   else if (/carrier/.test(text)) dimension = "carrier";
   else if (/destination|city/.test(text)) dimension = "destination";
   else if (/region/.test(text)) dimension = "region";

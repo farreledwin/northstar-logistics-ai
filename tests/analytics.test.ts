@@ -45,6 +45,8 @@ test("relative dates are anchored to the dataset clock", () => {
   assert.equal(plan.name, "query_analytics");
   assert.equal(plan.arguments.dateFrom, "2025-11-01");
   assert.equal(plan.arguments.dateTo, "2025-11-30");
+  assert.equal(plan.arguments.dimension, "none");
+  assert.equal(executeAnalytics(plan.arguments, records).value, 20);
 });
 
 test("forecast supports category history but abstains for a sparse SKU", () => {
