@@ -4,6 +4,8 @@ Northstar is a full-stack logistics analytics dashboard built for the Spaceship 
 
 Live demo: https://northstar-logistics-ai.vercel.app
 
+The public demo requires no authentication or test credentials.
+
 ## What is included
 
 - Five filter-aware KPIs: total orders, completed deliveries, delayed orders, on-time rate, and average delivery time
