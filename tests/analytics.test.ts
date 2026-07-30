@@ -86,3 +86,37 @@ test("time-series answers report the actual peak, not the first month", () => {
 
   assert.match(result.answer, new RegExp(peak.label));
 });
+
+test("assignment example queries map to the required computations", () => {
+  const weekly = fallbackPlan(
+    "Show delayed orders by week for the last 3 months",
+    records,
+  );
+  assert.equal(weekly.name, "query_analytics");
+  assert.deepEqual(
+    {
+      metric: weekly.arguments.metric,
+      dimension: weekly.arguments.dimension,
+      dateFrom: weekly.arguments.dateFrom,
+      dateTo: weekly.arguments.dateTo,
+    },
+    {
+      metric: "delayed_orders",
+      dimension: "week",
+      dateFrom: "2025-10-01",
+      dateTo: "2025-12-30",
+    },
+  );
+
+  const carrier = fallbackPlan(
+    "Which carrier has the highest delay rate?",
+    records,
+  );
+  assert.equal(executeAnalytics(carrier.arguments, records).rows[0]?.label, "GLS");
+
+  const late = fallbackPlan(
+    "How many orders were delivered late last month?",
+    records,
+  );
+  assert.equal(executeAnalytics(late.arguments, records).value, 4);
+});

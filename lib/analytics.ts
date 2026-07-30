@@ -121,7 +121,7 @@ export const DATA_MAX_DATE = "2025-12-30";
 
 export const METRIC_LABELS: Record<Metric, string> = {
   total_orders: "Total orders",
-  delivered_orders: "Completed deliveries",
+  delivered_orders: "Delivered orders",
   delayed_orders: "Delayed orders",
   on_time_rate: "On-time delivery rate",
   average_delivery_days: "Average delivery time",

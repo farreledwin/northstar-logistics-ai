@@ -180,6 +180,8 @@ input:focus, select:focus, textarea:focus { border-color: var(--green); box-shad
 .forecast-grid { display: grid; grid-template-columns: 1.7fr .8fr; }
 .forecast-chart { border-right: 0; padding: 34px; }
 .forecast-chart .line-chart { margin-top: 30px; }
+.forecast-values { color: var(--muted); font-family: var(--font-geist-mono), monospace; font-size: 9px; line-height: 1.7; margin: 18px 0 0; }
+.forecast-values strong { color: var(--ink); }
 .forecast-decision { background: var(--lime); padding: 36px; }
 .forecast-decision .eyebrow { color: #3c4d16; }
 .forecast-decision > strong { display: block; font-size: 60px; font-weight: 540; letter-spacing: -.06em; margin: 45px 0 20px; }

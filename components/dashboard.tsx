@@ -146,6 +146,15 @@ function ResultChart({ result }: { result: ToolResult }) {
           valueFormat={result.chart.valueFormat}
         />
       )}
+      {result.tool === "forecast_demand" && result.supported ? (
+        <p className="forecast-values">
+          <strong>Forecast values:</strong>{" "}
+          {result.chart.data
+            .filter((item) => item.forecast != null)
+            .map((item) => `${item.label}: ${item.value} units`)
+            .join(" · ")}
+        </p>
+      ) : null}
     </div>
   );
 }
@@ -253,7 +262,7 @@ export function Dashboard({ records }: { records: LogisticsRecord[] }) {
 
   const kpis = [
     { label: "Total orders", value: formatMetric(metric("total_orders")), note: "Unique order IDs" },
-    { label: "Completed", value: formatMetric(metric("delivered_orders")), note: "Delivered + delayed" },
+    { label: "Delivered orders", value: formatMetric(metric("delivered_orders")), note: "On-time + late completions" },
     { label: "Delayed", value: formatMetric(metric("delayed_orders")), note: "Completed late" },
     { label: "On-time rate", value: formatMetric(metric("on_time_rate"), "percent"), note: "Delivered / completed" },
     { label: "Avg. delivery", value: formatMetric(metric("average_delivery_days"), "days"), note: "Completed orders" },
@@ -422,6 +431,13 @@ export function Dashboard({ records }: { records: LogisticsRecord[] }) {
           <article className="panel forecast-chart">
             <div className="chart-heading"><h3>{forecast.chart.title}</h3><div className="legend"><span><i className="legend-history" /> Historical</span><span><i className="legend-forecast" /> Forecast</span></div></div>
             <LineChart data={forecast.chart.data} />
+            <p className="forecast-values">
+              <strong>Forecast values:</strong>{" "}
+              {forecast.chart.data
+                .filter((item) => item.forecast != null)
+                .map((item) => `${item.label}: ${item.value} units`)
+                .join(" · ")}
+            </p>
           </article>
           <aside className="forecast-decision">
             <p className="eyebrow">Next-month decision</p>

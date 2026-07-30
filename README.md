@@ -87,7 +87,7 @@ If the OpenAI call fails, the interface says so and uses a transparent keyword r
 | Metric | Definition |
 | --- | --- |
 | Total orders | Distinct `order_id` count |
-| Completed deliveries | Status is `delivered` or `delayed` |
+| Delivered orders | Status is `delivered` or `delayed` (on-time + late completions) |
 | Delayed orders | Status is `delayed` |
 | On-time rate | `delivered / (delivered + delayed)` |
 | Delay rate | `delayed / (delivered + delayed)` |
@@ -117,6 +117,7 @@ The data contains 355 SKUs across 400 orders; most SKUs appear only once. SKU fo
 
 ## Limitations and next steps
 
+- Supported natural-language analytics cover the documented metrics, time groupings, carrier/destination/region/category comparisons, and overall/category/SKU demand forecasts. Joins to external data, arbitrary SQL, multi-metric calculations, and causal “why” questions beyond the supplied fields are intentionally unsupported.
 - The forecast has no seasonality model or backtested error interval; with multiple years of history I would add rolling-origin validation and display uncertainty bands.
 - A public demo that uses a paid model should add durable rate limiting or an authenticated evaluation route plus an API-project spending cap.
 - At production scale, the same typed plans should compile to parameterized warehouse queries rather than loading all rows in memory.
